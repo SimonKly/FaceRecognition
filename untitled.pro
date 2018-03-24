@@ -25,10 +25,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    frengine.cpp \
+    ftengine.cpp \
+    fdengine.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    amcomdef.h \
+    arcsoft_fsdk_age_estimation.h \
+    arcsoft_fsdk_face_detection.h \
+    arcsoft_fsdk_face_recognition.h \
+    arcsoft_fsdk_face_tracking.h \
+    arcsoft_fsdk_gender_estimation.h \
+    asvloffscreen.h \
+    merror.h \
+    frengine.h \
+    utils.h \
+    ftengine.h \
+    fdengine.h
 
 FORMS += \
         mainwindow.ui
