@@ -1,0 +1,14 @@
+#ifndef AGEESTIMATION_H
+#define AGEESTIMATION_H
+
+#include "arcsoft_fsdk_age_estimation.h"
+#include "utils.h"
+#include "amcomdef.h"
+#include "merror.h"
+#include "asvloffscreen.h"
+
+class AgeEstimation
+
+
+
+#endif // AGEESTIMATION_H

@@ -1,4 +1,4 @@
-#ifndef FRENGINE_H
+﻿#ifndef FRENGINE_H
 #define FRENGINE_H
 
 #include "amcomdef.h"
@@ -22,12 +22,12 @@ public:
     //
     MRESULT init();
 
-    MRESULT extractFRFeature(LPASVLOFFSCREEN *pInputImg,
-                             LPAFR_FSDK_FACEINPUT *pFaceRes,
-                             LPAFR_FSDK_FACEMODEL *pModel);
+    MRESULT extractFRFeature(LPASVLOFFSCREEN pInputImg,
+                             LPAFR_FSDK_FACEINPUT pFaceRes,
+                             LPAFR_FSDK_FACEMODEL pModel);
 
-    MRESULT faceMatching(LPAFR_FSDK_FACEMODEL *reffeatures,
-                         LPAFR_FSDK_FACEMODEL *probefeatures,
+    MRESULT faceMatching(AFR_FSDK_FACEMODEL *reffeatures,
+                         AFR_FSDK_FACEMODEL *probefeatures,
                          MFloat *pScore);
 
     MRESULT uninit();

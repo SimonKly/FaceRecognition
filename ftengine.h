@@ -1,10 +1,10 @@
-#ifndef FTENGINE_H
+﻿#ifndef FTENGINE_H
 #define FTENGINE_H
 
 #include "amcomdef.h"
 #include "arcsoft_fsdk_face_tracking.h"
 #include "merror.h"
-#include "utils.h"
+
 #include "asvloffscreen.h"
 
 class FTEngine

@@ -28,7 +28,9 @@ SOURCES += \
         mainwindow.cpp \
     frengine.cpp \
     ftengine.cpp \
-    fdengine.cpp
+    fdengine.cpp \
+    ageestimationengine.cpp \
+    miscellaneous.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,9 +43,53 @@ HEADERS += \
     asvloffscreen.h \
     merror.h \
     frengine.h \
-    utils.h \
     ftengine.h \
-    fdengine.h
+    fdengine.h \
+    ageestimationengine.h \
+    miscellaneous.h
 
 FORMS += \
         mainwindow.ui
+
+
+#年龄估计
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_age_estimation
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_age_estimationd
+else:unix:!macx: LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_age_estimation
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
+
+
+#面部侦测
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_detection
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_detectiond
+else:unix:!macx: LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_detection
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
+
+
+#面部追踪
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_tracking
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_trackingd
+else:unix:!macx: LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_tracking
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
+
+#面试识别
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_recognition
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_recognitiond
+else:unix:!macx: LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_face_recognition
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
+
+#性别判断
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_gender_estimation
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_gender_estimationd
+else:unix:!macx: LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_gender_estimation
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.

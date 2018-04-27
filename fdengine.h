@@ -1,7 +1,6 @@
-#ifndef FDENGINE_H
+﻿#ifndef FDENGINE_H
 #define FDENGINE_H
 
-#include "utils.h"
 #include "amcomdef.h"
 #include "arcsoft_fsdk_face_detection.h"
 #include "merror.h"

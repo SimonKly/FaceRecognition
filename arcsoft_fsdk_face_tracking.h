@@ -79,8 +79,8 @@ extern "C" {
     MRESULT AFT_FSDK_InitialFaceEngine(
         MPChar AppId,					               // [in]  APPID
         MPChar SDKKey,						           // [in]  SDKKEY
-        MByte *pMem,						           // [in]	User allocated memory for the engine
-        MInt32 lMemSize,					           // [in]	User allocated memory size
+        MByte*		pMem,						       // [in]	User allocated memory for the engine
+        MInt32		lMemSize,					       // [in]	User allocated memory size
         MHandle *phEngine,                             // [out] Pointing to the tracking engine
         AFT_FSDK_OrientPriority iOrientPriority,       // [in]  Defining the priority of face orientation.
         MInt32 nScale,                                 // [in]  An integer defining the minimal face to detect
