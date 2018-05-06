@@ -1,38 +1,58 @@
 ﻿#ifndef MISCELLANEOUS_H
 #define MISCELLANEOUS_H
-//namespace UTILS {
 
-
-#define APPID     "7xNBCHMY1MpxRY2hqSWeEcz5whkhBCQqGSVFAkxSqHcd"
-#define SDKKEY_AE    "DQz7rMe8wNiXvzCmku1avGusNknYWHJy3jqT1m2Tnwvq"
-#define SDKKEY_FD    "DQz7rMe8wNiXvzCmku1avGu8QMDYDMoU5xpvSEhp4AH2"
-#define SDKKEY_FR    "DQz7rMe8wNiXvzCmku1avGuVtZ12AFha9qr2et3cbTRx"
-#define SDKKEY_FT    "DQz7rMe8wNiXvzCmku1avGuzYA3gM7hnLSWmdMic2hGJ"
-#define SDKKEY_GE    "DQz7rMe8wNiXvzCmku1avGu1EwxKNTtBZyjU2M5E8Lpn"
-
-
-#define INPUT1_IMAGE_FORMAT  ASVL_PAF_I420
-#define INPUT1_IMAGE_PATH    "your_input1_image.yuv"
-#define INPUT1_IMAGE_WIDTH   (640)
-#define INPUT1_IMAGE_HEIGHT  (480)
-
-#define INPUT2_IMAGE_FORMAT  ASVL_PAF_I420
-#define INPUT2_IMAGE_PATH    "your_input2_image.yuv"
-#define INPUT2_IMAGE_WIDTH   (640)
-#define INPUT2_IMAGE_HEIGHT  (880)
-
-//#define WORKBUF_SIZE        (40*1024*1024)
 const unsigned int WORKBUF_SIZE = 40*1024*1024;
 
 #include "amcomdef.h"
 #include <QString>
 #include <QByteArray>
+#include <QImage>
+
 namespace MISCELLANEOUS {
 
+/* 虹软的认证串 */
+class Authenticate
+{
+public:
+    static QString APPID;
+    static QString SDKKEY_AE;
+    static  QString SDKKEY_FD;
+    static QString SDKKEY_FR;
+    static QString SDKKEY_FT;
+    static QString SDKKEY_GE;
+};
 
+// 为了程序少一些平台相关性，剔出bmp的信息头定义
+typedef struct tagBITMAPINFOHEADER {
+	unsigned long      biSize;
+	long       biWidth;
+	long       biHeight;
+	unsigned short       biPlanes;
+	unsigned short       biBitCount;
+	unsigned long      biCompression;
+	unsigned long      biSizeImage;
+	long       biXPelsPerMeter;
+	long       biYPelsPerMeter;
+	unsigned long      biClrUsed;
+	unsigned long      biClrImportant;
+} BITMAPINFOHEADER, *LPBITMAPINFOHEADER, *PBITMAPINFOHEADER;
+
+/*
+ * @brief:将const char * 转换为 char *
+ * @param cpStr [in]:const char *格式的字符串
+ * @return value: 转换之后的char *字符串
+ */
 MPChar CChar2Char(MPCChar cpStr);
 
-
+/*
+ * @brief:读取bmp格式的 
+ * @param filePath [in]:bmp文件路径
+ * @param imgData [out]:存入图片的信息
+ * @param pWidth [out]:图片width
+ * @param pHeight [out]:图片height
+ * @return value: 图片位宽正确返回true，否则false
+ */
+bool readBmp(QString &filePath, unsigned char **imgData, int *pWidth, int *pHeight);
 
 }
 #endif // UTILS_H

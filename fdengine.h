@@ -17,9 +17,11 @@ public:
 
     /*
      * @brief:初始化引擎
+	 * @param nScale [in]:人脸相对于相片的缩放比例，default 16
+	 * @param nMaxFaceNum [in]:能够识别人脸的数目，default 50
      * @return value:初始化成功返回MOK，否则返回error code，具体错误参考merror.h
      */
-    MRESULT init();
+    MRESULT init(int nScale = 16, int nMaxFaceNum = 50);
 
     /*
      * @brief:获取人脸位置
@@ -38,7 +40,7 @@ public:
 private:
 
     MByte *m_pMem;
-    MHandle *m_pEngine;
+    MHandle m_pEngine;
 
 };
 

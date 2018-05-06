@@ -15,7 +15,9 @@ FREngine::~FREngine()
 MRESULT FREngine::init()
 {
     this->m_pWorkMem = new MByte[WORKBUF_SIZE];
-    int ret = AFR_FSDK_InitialEngine(MISCELLANEOUS::CChar2Char(APPID), MISCELLANEOUS::CChar2Char(SDKKEY_FD), m_pWorkMem, WORKBUF_SIZE, &m_FREngine);
+    int ret = AFR_FSDK_InitialEngine(MISCELLANEOUS::Authenticate::APPID.toLatin1().data(), 
+		MISCELLANEOUS::Authenticate::SDKKEY_FD.toLatin1().data(), 
+		m_pWorkMem, WORKBUF_SIZE, &m_FREngine);
     return ret;
 }
 
@@ -37,7 +39,8 @@ MRESULT FREngine::faceMatching(AFR_FSDK_FACEMODEL *reffeatures,
 
 MRESULT FREngine::uninit()
 {
-    delete []this->m_pWorkMem;
+	if (this->m_pWorkMem != nullptr)
+		delete[]this->m_pWorkMem;
     int ret = AFR_FSDK_UninitialEngine(this->m_FREngine);
     return ret;
 }

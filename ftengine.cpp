@@ -36,8 +36,9 @@ MRESULT FTEngine::init()
     {
         assert(ex.what());
     }
-    int ret = AFT_FSDK_InitialFaceEngine(MISCELLANEOUS::CChar2Char(APPID), MISCELLANEOUS::CChar2Char(SDKKEY_FD), this->m_pMem, WORKBUF_SIZE,
-                                         this->m_pEngine, AFT_FSDK_OPF_0_ONLY, 16, 50);
+    int ret = AFT_FSDK_InitialFaceEngine(MISCELLANEOUS::Authenticate::APPID.toLatin1().data(),
+		MISCELLANEOUS::Authenticate::SDKKEY_FD.toLatin1().data(), this->m_pMem, WORKBUF_SIZE,
+        &m_pEngine, AFT_FSDK_OPF_0_ONLY, 16, 50);
 
     return ret;
 }

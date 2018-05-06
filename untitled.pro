@@ -22,6 +22,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+msvc:QMAKE_CXXFLAGS += -execution-charset:utf-8
+
+msvc:QMAKE_CXXFLAGS += -source-charset:utf-8
 
 SOURCES += \
         main.cpp \
@@ -30,7 +33,8 @@ SOURCES += \
     ftengine.cpp \
     fdengine.cpp \
     ageestimationengine.cpp \
-    miscellaneous.cpp
+    miscellaneous.cpp \
+    ImageLabel.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -46,7 +50,8 @@ HEADERS += \
     ftengine.h \
     fdengine.h \
     ageestimationengine.h \
-    miscellaneous.h
+    miscellaneous.h \
+    ImageLabel.h
 
 FORMS += \
         mainwindow.ui
@@ -75,4 +80,3 @@ unix|win32: LIBS += -L$$PWD/lib/ -llibarcsoft_fsdk_gender_estimation
 
 INCLUDEPATH += $$PWD/.
 DEPENDPATH += $$PWD/.
-

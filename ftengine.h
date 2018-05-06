@@ -26,7 +26,7 @@ public:
     MRESULT uninit();
 
 private:
-    MHandle *m_pEngine;
+    MHandle m_pEngine;
     MByte *m_pMem;
 
 

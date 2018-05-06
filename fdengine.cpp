@@ -2,6 +2,7 @@
 #include <new>
 #include <cassert>
 #include "miscellaneous.h"
+#include <string>
 
 FDEngine::FDEngine()
 {
@@ -11,14 +12,14 @@ FDEngine::FDEngine()
 
 FDEngine::~FDEngine()
 {
-    //this->uninit();
+    this->uninit();
 }
 
 /*
  * @brief:初始化引擎
  * @return value:初始化成功返回MOK，否则返回error code，具体错误参考merror.h
  */
-MRESULT FDEngine::init()
+MRESULT FDEngine::init(int nScale, int nMaxFaceNum)
 {
     try
     {
@@ -29,9 +30,10 @@ MRESULT FDEngine::init()
         assert(excp.what());
     }
 
-    MRESULT ret = AFD_FSDK_InitialFaceEngine(MISCELLANEOUS::CChar2Char(APPID), MISCELLANEOUS::CChar2Char(SDKKEY_FD), this->m_pMem,
-                                                 WORKBUF_SIZE, this->m_pEngine,
-                                                 AFD_FSDK_OPF_0_ONLY, 16, 50);
+    MRESULT ret = AFD_FSDK_InitialFaceEngine(MISCELLANEOUS::Authenticate::APPID.toLatin1().data(), 
+		MISCELLANEOUS::Authenticate::SDKKEY_FD.toLatin1().data(),
+		this->m_pMem, WORKBUF_SIZE, &(this->m_pEngine),
+        AFD_FSDK_OPF_0_ONLY, nScale, nMaxFaceNum);
 
     return ret;
 }
